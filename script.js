@@ -8,39 +8,28 @@ const GRID = {
 
 const WALLPAPERS = {
   sunbeam: {
-    name: 'Sunbeam',
-    css: `radial-gradient(circle at 20% 30%, rgba(255,159,67,0.12) 0%, transparent 50%),
-          radial-gradient(circle at 80% 70%, rgba(255,107,107,0.10) 0%, transparent 50%),
-          linear-gradient(160deg, #FFF5E6 0%, #FFE4C4 40%, #FFD699 100%)`,
+    name: 'Sunbeam Cat',
+    url: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1920&auto=format&fit=crop',
   },
   midnight: {
-    name: 'Midnight',
-    css: `radial-gradient(circle at 30% 40%, rgba(147,129,255,0.15) 0%, transparent 50%),
-          radial-gradient(circle at 70% 60%, rgba(255,107,157,0.10) 0%, transparent 50%),
-          linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)`,
+    name: 'White Cat',
+    url: 'https://images.unsplash.com/photo-1472491235688-bdc81a63246e?q=80&w=1920&auto=format&fit=crop',
   },
-  catnip: {
-    name: 'Catnip Fields',
-    css: `radial-gradient(circle at 40% 30%, rgba(107,255,147,0.12) 0%, transparent 50%),
-          radial-gradient(circle at 60% 70%, rgba(159,255,107,0.10) 0%, transparent 50%),
-          linear-gradient(160deg, #e8f5e9 0%, #c8e6c9 40%, #a5d6a7 100%)`,
+  tabby: {
+    name: 'Orange Tabby',
+    url: 'https://images.unsplash.com/photo-1495360010541-f48722b34f7d?q=80&w=1920&auto=format&fit=crop',
   },
-  paws: {
-    name: 'Paw Prints',
-    css: `repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,159,67,0.04) 20px, rgba(255,159,67,0.04) 40px),
-          linear-gradient(160deg, #FFF5E6 0%, #FFE4C4 50%, #FFD699 100%)`,
+  gray: {
+    name: 'Gray Whiskers',
+    url: 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?q=80&w=1920&auto=format&fit=crop',
   },
-  sunset: {
-    name: 'Tuna Sunset',
-    css: `radial-gradient(circle at 50% 0%, rgba(255,200,100,0.2) 0%, transparent 50%),
-          radial-gradient(circle at 20% 80%, rgba(255,100,50,0.15) 0%, transparent 40%),
-          linear-gradient(160deg, #FF6B35 0%, #FF8C42 30%, #FFB347 60%, #FFD699 100%)`,
+  peek: {
+    name: 'Peek-a-boo',
+    url: 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=1920&auto=format&fit=crop',
   },
-  wonderland: {
-    name: 'Whisker Wonderland',
-    css: `radial-gradient(circle at 30% 20%, rgba(200,150,255,0.12) 0%, transparent 40%),
-          radial-gradient(circle at 70% 80%, rgba(255,150,200,0.10) 0%, transparent 40%),
-          linear-gradient(160deg, #f3e5f5 0%, #e8d5f5 30%, #fce4ec 60%, #fff3e0 100%)`,
+  grumpy: {
+    name: 'Grumpy Cat',
+    url: 'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?q=80&w=1920&auto=format&fit=crop',
   },
 }
 
@@ -108,21 +97,21 @@ function runCommand(cmd, outputEl) {
   const commands = {
     help() {
       return `<span class="info">Available commands:</span>
-  <span class="prompt">help</span>     - Show this message
-  <span class="prompt">whoami</span>   - Discover who you are
-  <span class="prompt">ls</span>       - List files
-  <span class="prompt">meow</span>     - Make a cat sound
-  <span class="prompt">purr</span>     - The cat purrs
-  <span class="prompt">date</span>     - Show current date
-  <span class="prompt">weather</span>  - Check the weather
-  <span class="prompt">cat</span>      - Display a cat
-  <span class="prompt">neofetch</span> - Show system info
-  <span class="prompt">nap</span>      - Take a nap
-  <span class="prompt">treat</span>    - Get a treat
-  <span class="prompt">sudo</span>     - Try admin powers
-  <span class="prompt">clear</span>    - Clear the terminal
-  <span class="prompt">echo</span>     - Repeat text
-  <span class="prompt">pwd</span>      - Show current directory`
+  <span class="prompt">help</span>       - Show this message
+  <span class="prompt">whoami</span>     - Discover who you are
+  <span class="prompt">ls</span>         - List files
+  <span class="prompt">meow</span>       - Make a cat sound
+  <span class="prompt">purr</span>       - The cat purrs
+  <span class="prompt">date</span>       - Show current date
+  <span class="prompt">weather</span>    - Check the weather
+  <span class="prompt">cat</span>        - Display a cat
+  <span class="prompt">neofetch</span>   - Show system info
+  <span class="prompt">nap</span>        - Take a nap
+  <span class="prompt">treat</span>      - Spawn food for the chibi cat
+  <span class="prompt">sudo</span>       - Try admin powers
+  <span class="prompt">clear</span>      - Clear the terminal
+  <span class="prompt">echo</span>       - Repeat text
+  <span class="prompt">pwd</span>        - Show current directory`
     },
     whoami() { return '<span class="success">You are a wonderful human. The cat says so. 🐱</span>' },
     ls() { return '<span class="meow">Documents/  Pictures/  Toys/  Treats/  Naps/  RedDot.exe</span>' },
@@ -160,8 +149,8 @@ function runCommand(cmd, outputEl) {
       return `<span class="meow">${list[Math.floor(Math.random() * list.length)]}</span>`
     },
     treat() {
-      const list = ['🐟 Here\'s a tuna treat! Nom nom!', '🍗 Chicken treat! You earned it!', '🌿 Catnip! Going wild!', '🧀 Cheese bit! Purr!']
-      return `<span class="success">${list[Math.floor(Math.random() * list.length)]}</span>`
+      spawnFood()
+      return `<span class="success">A fish treat appears near the chibi cat!</span>`
     },
     sudo() { return '<span class="warn">Nice try. You\'re already the admin here. 🐱</span>' },
     clear() { outputEl.innerHTML = ''; return '' },
@@ -179,6 +168,9 @@ function runCommand(cmd, outputEl) {
     outputEl.innerHTML += `<div><span class="error">meow?</span> Unknown command: "${name}". Try <span class="prompt">help</span></div>`
   }
 }
+
+const PET_SOUNDS = ['purrr~', 'meow!', 'pet me more~', 'so warm...', 'right there~']
+const FEED_SOUNDS = ['nom nom!', 'yummy!', 'delicious!', 'more please!', 'om nom nom!']
 
 const STATE_KEY = 'kittyos-state'
 
@@ -200,6 +192,17 @@ const state = {
   labels: {},
   renamingApp: null,
   contextTarget: null,
+  chibi: {
+    x: 500, y: 300,
+    happiness: 50,
+    lastPet: 0,
+    mood: 'idle',
+    animState: 'idle',
+  },
+  foodItems: [],
+  nextFoodId: 1,
+  chibiDrag: null,
+  foodDrag: null,
 }
 
 function saveState() {
@@ -209,6 +212,8 @@ function saveState() {
       pinnedApps: state.pinnedApps,
       settings: state.settings,
       taskbarLabels: state.labels,
+      chibi: state.chibi,
+      foodItems: state.foodItems,
     }))
   } catch {
     /* storage full or unavailable */
@@ -229,6 +234,14 @@ function loadState() {
       if (data.settings.gridSnap != null) state.settings.gridSnap = data.settings.gridSnap
     }
     if (data.taskbarLabels) state.labels = data.taskbarLabels
+    if (data.chibi) {
+      state.chibi.x = data.chibi.x || 500
+      state.chibi.y = data.chibi.y || 300
+      state.chibi.happiness = data.chibi.happiness ?? 50
+      const oldMood = data.chibi.mood
+      state.chibi.mood = oldMood === 'blep' ? 'sleepy' : oldMood === 'neutral' ? 'idle' : oldMood === 'loved' ? 'very_happy' : (oldMood || 'idle')
+    }
+    if (data.foodItems) state.foodItems = data.foodItems
   } catch {
     /* corrupted state */
   }
@@ -244,14 +257,16 @@ const $ = {
   settingsBtn: document.getElementById('settings-btn'),
 }
 
-setInterval(() => {
+function tickClock() {
   $.clock.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-}, 1000)
+}
+tickClock()
+setInterval(tickClock, 1000)
 
 function setWallpaper(key) {
   const wp = WALLPAPERS[key]
   if (!wp) return
-  $.desktop.style.background = wp.css
+  $.desktop.style.background = `url(${wp.url}) center/cover no-repeat`
   state.settings.wallpaper = key
   state.settings.customWallpaper = null
   saveState()
@@ -272,7 +287,9 @@ function renderIcons() {
     el.dataset.app = id
     el.style.left = data.x + 'px'
     el.style.top = data.y + 'px'
-    el.innerHTML = `<span class="icon">${data.icon}</span><span class="label">${data.label}</span>`
+    const app = apps[data.appId]
+    const iconHtml = app?.iconImg ? `<img class="icon-img" src="${app.iconImg}" draggable="false">` : `<span class="icon">${data.icon}</span>`
+    el.innerHTML = `${iconHtml}<span class="label">${data.label}</span>`
     el.addEventListener('dblclick', () => launchApp(id))
     initIconDrag(el, id)
     $.desktop.appendChild(el)
@@ -335,6 +352,28 @@ document.addEventListener('mousemove', e => {
     }
   }
 
+  if (state.chibiDrag) {
+    const d = state.chibiDrag
+    const el = document.querySelector(`.chibi-cat[data-chibi="${d.id}"]`)
+    if (el) {
+      el.style.left = (d.origX + e.clientX - d.startX) + 'px'
+      el.style.top = (d.origY + e.clientY - d.startY) + 'px'
+    }
+  }
+
+  if (state.foodDrag) {
+    const d = state.foodDrag
+    const el = document.querySelector(`.food-item[data-food="${d.id}"]`)
+    if (el) {
+      el.style.left = (d.origX + e.clientX - d.startX) + 'px'
+      el.style.top = (d.origY + e.clientY - d.startY) + 'px'
+    }
+    if (checkFoodProximity(d.id)) {
+      feedChibi(d.id)
+      state.foodDrag = null
+    }
+  }
+
   if (state.winDrag) {
     const d = state.winDrag
     d.el.style.left = (d.origX + e.clientX - d.startX) + 'px'
@@ -364,6 +403,39 @@ document.addEventListener('mouseup', () => {
       }
     }
     state.iconDrag = null
+  }
+
+  if (state.chibiDrag) {
+    const d = state.chibiDrag
+    const el = document.querySelector(`.chibi-cat[data-chibi="${d.id}"]`)
+    if (el) {
+      el.classList.remove('dragging')
+      state.chibi.x = parseInt(el.style.left) || state.chibi.x
+      state.chibi.y = parseInt(el.style.top) || state.chibi.y
+      saveState()
+    }
+    state.chibiDrag = null
+  }
+
+  if (state.foodDrag) {
+    const d = state.foodDrag
+    const el = document.querySelector(`.food-item[data-food="${d.id}"]`)
+    if (el) el.classList.remove('dragging')
+    if (!state.foodItems.find(f => f.id === d.id)) {
+      state.foodDrag = null
+      return
+    }
+    if (checkFoodProximity(d.id)) {
+      feedChibi(d.id)
+    } else if (el) {
+      const f = state.foodItems.find(f => f.id === d.id)
+      if (f) {
+        f.x = parseInt(el.style.left) || f.x
+        f.y = parseInt(el.style.top) || f.y
+        saveState()
+      }
+    }
+    state.foodDrag = null
   }
 
   if (state.winDrag) {
@@ -490,6 +562,231 @@ function renderWeatherWidget() {
   </div>`
   $.widgets.appendChild(el)
 }
+
+function getChibiMood() {
+  const h = state.chibi.happiness
+  if (h < 25) return 'sleepy'
+  if (h < 50) return 'idle'
+  if (h < 75) return 'happy'
+  return 'very_happy'
+}
+
+const _alphaCanvasCache = new Map()
+
+function getAlphaAt(imgEl, clientX, clientY) {
+  if (!imgEl.complete || !imgEl.naturalWidth) return 255
+  const src = imgEl.src
+  if (!_alphaCanvasCache.has(src)) {
+    const c = document.createElement('canvas')
+    const w = imgEl.naturalWidth
+    const h = imgEl.naturalHeight
+    c.width = w
+    c.height = h
+    const ctx = c.getContext('2d')
+    ctx.drawImage(imgEl, 0, 0, w, h)
+    _alphaCanvasCache.set(src, { ctx, w, h })
+  }
+  const { ctx, w, h } = _alphaCanvasCache.get(src)
+  const rect = imgEl.getBoundingClientRect()
+  const sx = Math.round((clientX - rect.left) / rect.width * w)
+  const sy = Math.round((clientY - rect.top) / rect.height * h)
+  if (sx < 0 || sx >= w || sy < 0 || sy >= h) return 0
+  return ctx.getImageData(sx, sy, 1, 1).data[3]
+}
+
+function renderChibi() {
+  document.querySelectorAll('.chibi-cat').forEach(el => el.remove())
+  const d = state.chibi
+  d.mood = getChibiMood()
+  const el = document.createElement('div')
+  el.className = 'chibi-cat'
+  el.dataset.chibi = 'main'
+  el.style.left = d.x + 'px'
+  el.style.top = d.y + 'px'
+  const img = document.createElement('img')
+  img.src = d.mood + '.png'
+  img.draggable = false
+  el.appendChild(img)
+  el.addEventListener('click', e => {
+    if (state.chibiDrag) return
+    if (getAlphaAt(img, e.clientX, e.clientY) < 10) return
+    petChibi()
+  })
+  initChibiDrag(el, img)
+  $.desktop.appendChild(el)
+}
+
+function updateChibiImage() {
+  const d = state.chibi
+  d.mood = getChibiMood()
+  const el = document.querySelector('.chibi-cat img')
+  if (el) el.src = d.mood + '.png'
+}
+
+function initChibiDrag(el, img) {
+  el.addEventListener('mousedown', e => {
+    if (e.button !== 0) return
+    if (getAlphaAt(img, e.clientX, e.clientY) < 10) return
+    state.chibiDrag = {
+      id: 'main',
+      startX: e.clientX,
+      startY: e.clientY,
+      origX: parseInt(el.style.left) || 0,
+      origY: parseInt(el.style.top) || 0,
+    }
+    el.classList.add('dragging')
+  })
+}
+
+function petChibi() {
+  const now = Date.now()
+  if (now - state.chibi.lastPet < 2000) return
+  state.chibi.lastPet = now
+  state.chibi.happiness = Math.min(100, state.chibi.happiness + 5)
+  updateChibiImage()
+  showHeart(state.chibi.x, state.chibi.y)
+  showSpeech(state.chibi.x, state.chibi.y, PET_SOUNDS[Math.floor(Math.random() * PET_SOUNDS.length)])
+  saveState()
+}
+
+function showHeart(x, y) {
+  const el = document.createElement('div')
+  el.className = 'heart-particle'
+  el.textContent = '♥'
+  el.style.left = (x + 16) + 'px'
+  el.style.top = (y - 10) + 'px'
+  $.desktop.appendChild(el)
+  setTimeout(() => el.remove(), 1200)
+}
+
+function showSpeech(x, y, text) {
+  const el = document.createElement('div')
+  el.className = 'speech-bubble'
+  el.textContent = text
+  el.style.left = (x + 20) + 'px'
+  el.style.top = (y - 30) + 'px'
+  $.desktop.appendChild(el)
+  setTimeout(() => el.remove(), 1800)
+}
+
+function spawnFood() {
+  const cx = state.chibi.x
+  const cy = state.chibi.y
+  const food = {
+    id: state.nextFoodId++,
+    x: cx + 80 + Math.floor(Math.random() * 40) - 20,
+    y: cy + Math.floor(Math.random() * 40) - 20,
+    spawnedAt: Date.now(),
+  }
+  state.foodItems.push(food)
+  renderFood()
+  saveState()
+}
+
+function renderFood() {
+  document.querySelectorAll('.food-item').forEach(el => el.remove())
+  const now = Date.now()
+  state.foodItems = state.foodItems.filter(f => now - f.spawnedAt < 20000)
+  for (const f of state.foodItems) {
+    const el = document.createElement('div')
+    el.className = 'food-item'
+    el.dataset.food = f.id
+    el.style.left = f.x + 'px'
+    el.style.top = f.y + 'px'
+    const img = document.createElement('img')
+    img.src = 'fish.png'
+    img.draggable = false
+    el.appendChild(img)
+    initFoodDrag(el, f.id)
+    $.desktop.appendChild(el)
+  }
+}
+
+function initFoodDrag(el, foodId) {
+  el.addEventListener('mousedown', e => {
+    if (e.button !== 0) return
+    state.foodDrag = {
+      id: foodId,
+      startX: e.clientX,
+      startY: e.clientY,
+      origX: parseInt(el.style.left) || 0,
+      origY: parseInt(el.style.top) || 0,
+      el,
+    }
+    el.classList.add('dragging')
+  })
+}
+
+function checkFoodProximity(foodId) {
+  const food = state.foodItems.find(f => f.id === foodId)
+  if (!food) return false
+  const chibiEl = document.querySelector('.chibi-cat')
+  if (!chibiEl) return false
+  const cr = chibiEl.getBoundingClientRect()
+  const cx = cr.left + cr.width / 2
+  const cy = cr.top + cr.height / 2
+  const foodEl = document.querySelector(`.food-item[data-food="${foodId}"]`)
+  if (!foodEl) return false
+  const fr = foodEl.getBoundingClientRect()
+  const fx = fr.left + fr.width / 2
+  const fy = fr.top + fr.height / 2
+  const dist = Math.sqrt((cx - fx) ** 2 + (cy - fy) ** 2)
+  return dist < 80
+}
+
+function feedChibi(foodId) {
+  const idx = state.foodItems.findIndex(f => f.id === foodId)
+  if (idx === -1) return
+  state.foodItems.splice(idx, 1)
+  document.querySelector(`.food-item[data-food="${foodId}"]`)?.remove()
+  state.chibi.happiness = Math.min(100, state.chibi.happiness + 20)
+  state.chibi.animState = 'eating'
+  updateChibiImage()
+  showSpeech(state.chibi.x, state.chibi.y, FEED_SOUNDS[Math.floor(Math.random() * FEED_SOUNDS.length)])
+  const chibiEl = document.querySelector('.chibi-cat')
+  if (chibiEl) {
+    chibiEl.classList.add('eating')
+    setTimeout(() => {
+      chibiEl.classList.remove('eating')
+      state.chibi.animState = 'idle'
+    }, 800)
+  }
+  saveState()
+}
+
+// Food cleanup interval
+setInterval(() => {
+  const before = state.foodItems.length
+  renderFood()
+  if (state.foodItems.length !== before) saveState()
+}, 5000)
+
+// Happiness decay interval
+setInterval(() => {
+  if (state.chibi.happiness > 0) {
+    state.chibi.happiness = Math.max(0, state.chibi.happiness - 1)
+    updateChibiImage()
+  }
+}, 30000)
+
+// Mood cycling interval
+function scheduleMoodCycle() {
+  const delay = 4000 + Math.random() * 3000
+  state._cycleTimer = setTimeout(() => {
+    const base = getChibiMood()
+    let cycleTo
+    if (base === 'idle') cycleTo = 'happy'
+    else cycleTo = 'idle'
+    const el = document.querySelector('.chibi-cat img')
+    if (el) el.src = cycleTo + '.png'
+    setTimeout(() => {
+      const back = document.querySelector('.chibi-cat img')
+      if (back) back.src = getChibiMood() + '.png'
+      scheduleMoodCycle()
+    }, 800)
+  }, delay)
+}
+scheduleMoodCycle()
 
 function createWindow(app) {
   const id = 'win-' + state.nextId++
@@ -631,7 +928,8 @@ function taskbarButton(app, appId) {
   btn.className = 'tb-btn'
   btn.dataset.app = appId
   const label = state.labels[appId] || app.title
-  btn.innerHTML = `<span class="tb-icon">${app.icon}</span>${label}`
+  const tbIcon = app.iconImg ? `<img class="tb-icon-img" src="${app.iconImg}" draggable="false">` : `<span class="tb-icon">${app.icon}</span>`
+  btn.innerHTML = `${tbIcon}${label}`
   btn.addEventListener('contextmenu', e => {
     e.preventDefault()
     e.stopPropagation()
@@ -833,6 +1131,7 @@ const apps = {
     id: 'terminal',
     title: 'Meow Terminal',
     icon: '💻',
+    iconImg: 'catTerminal.png',
     width: 620,
     height: 400,
     onReady(id, body) {
@@ -869,6 +1168,7 @@ const apps = {
     id: 'notes',
     title: 'Whisker Notes',
     icon: '📝',
+    iconImg: 'catNotes.png',
     width: 500,
     height: 400,
     onReady(id, body) {
@@ -883,6 +1183,7 @@ const apps = {
     id: 'explorer',
     title: 'Cat Explorer',
     icon: '🗂️',
+    iconImg: 'catFolder.png',
     width: 640,
     height: 440,
     onReady(id, body) {
@@ -947,6 +1248,7 @@ const apps = {
     id: 'clock',
     title: 'PurrClock',
     icon: '🕐',
+    iconImg: 'catclock.png',
     width: 320,
     height: 360,
     onReady(id, body) {
@@ -1014,7 +1316,7 @@ function renderWallpaperTab(panel, winId) {
   let html = '<div class="wp-grid">'
   for (const [key, wp] of Object.entries(WALLPAPERS)) {
     const active = state.settings.customWallpaper ? false : state.settings.wallpaper === key
-    html += `<div class="wp-card${active ? ' active' : ''}" data-wp="${key}" style="background:${wp.css}">
+    html += `<div class="wp-card${active ? ' active' : ''}" data-wp="${key}" style="background:url(${wp.url}) center/cover">
       <span class="wp-label">${wp.name}</span>
     </div>`
   }
@@ -1081,8 +1383,13 @@ function renderWidgetsTab(panel) {
 }
 
 loadState()
+if (!WALLPAPERS[state.settings.wallpaper]) {
+  state.settings.wallpaper = Object.keys(WALLPAPERS)[0]
+}
 setWallpaper(state.settings.wallpaper)
 renderIcons()
+renderChibi()
+renderFood()
 renderTaskbar()
 renderWidgets()
 

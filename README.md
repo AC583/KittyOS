@@ -9,7 +9,7 @@ A whimsical, cat-themed desktop environment simulator — built entirely in vani
 ### Desktop Environment
 - **Draggable desktop icons** with grid-snap and collision avoidance
 - **Right-click context menu** — open, pin, rename, sort, and more
-- **6 built-in wallpapers** (Sunbeam, Midnight, Catnip Fields, Paw Prints, Tuna Sunset, Whisker Wonderland) plus **custom upload**
+- **6 built-in cat image wallpapers** (Sunbeam Cat, White Cat, Orange Tabby, Gray Whiskers, Peek-a-boo, Grumpy Cat) plus **custom upload**
 - **Desktop widgets** — toggleable Calendar and Weather from Settings
 - **State persistence** via `localStorage` — icon positions, pinned apps, wallpapers, notes, and settings survive refresh
 
@@ -24,11 +24,23 @@ A whimsical, cat-themed desktop environment simulator — built entirely in vani
 - Minimize/restore and close
 - Animated open/close transitions
 
+### Chibi Cat Character
+
+A calico cat lives on the desktop and responds to interaction:
+
+- **Pet the cat** — Click on it to pet (+5 happiness, heart floats up, speech bubble)
+- **Feed the cat** — Use `treat` in the terminal to spawn a fish, then drag it near the cat (+20 happiness)
+- **4 expressions** — Cycles based on happiness: sleepy, idle, happy, very_happy
+- **Expression cycling** — The cat naturally blinks and shifts expressions every few seconds
+- **Happiness decays** by 1 every 30 seconds
+- **Draggable** — Click and drag to reposition the cat anywhere on the desktop
+- **State persisted** in localStorage across sessions
+
 ### Built-in Apps
 
 | App | Description |
 |---|---|
-| **Meow Terminal** (`💻`) | Interactive shell with ASCII art banner. Commands: `help`, `ls`, `cat`, `meow`, `purr`, `neofetch`, `sudo`, `echo`, `date`, `weather`, `clear`, and more |
+| **Meow Terminal** (`💻`) | Interactive shell with ASCII art banner. Commands: `help`, `ls`, `cat`, `meow`, `purr`, `neofetch`, `sudo`, `echo`, `date`, `weather`, `treat`, `clear`, and more |
 | **Whisker Notes** (`📝`) | Auto-saving text editor |
 | **Cat Explorer** (`🗂️`) | File browser with a fictional cat-themed filesystem (`/treats/`, `/naps/`, `/home/whiskers/`) |
 | **PurrClock** (`🕐`) | Analog clock with live digital readout |
@@ -63,8 +75,13 @@ No installation, no `npm install`, no build step required.
 ```
 KittyOS/
 ├── index.html      # Entry point (28 lines)
-├── style.css       # All styling (736 lines)
-└── script.js       # All application logic (1101 lines)
+├── style.css       # All styling (870 lines)
+├── script.js       # All application logic (1376 lines)
+├── happy.png       # Cat expression
+├── idle.png        # Cat expression
+├── sleepy.png      # Cat expression
+├── very_happy.png  # Cat expression
+└── fish.jpeg       # Treat food
 ```
 
 Everything is self-contained in three files.
